@@ -1,0 +1,42 @@
+﻿@model LanchesMac.ViewModel.PedidoLancheViewModel
+
+@{
+    ViewData["Title"] = "PedidoLanches";
+    decimal totalPedido = 0;
+}
+
+<h1>Lanches do Pedido</h1>
+<hr />
+
+<h3>Pedido: @Html.DisplayFor(model => @Model.Pedido.PedidoId)</h3>
+<h3>Cliente:@Html.DisplayFor(model => @Model.Pedido.Nome) </h3>
+<h3>Data : @Html.DisplayFor(model => @Model.Pedido.PedidoEnviado)</h3>
+<h3>Entrega: @Html.DisplayFor(model => @Model.Pedido.PedidoEntregueEm)</h3>
+
+<table class="table">
+    @foreach (var item in @Model.Pedido.PedidoItens)
+    {
+        totalPedido += (item.Lanche.Preco * item.Quantidade);
+        //calcila o total que custou cada item pela quantidade pedida
+
+        <tr>
+            <td>
+                <h3>@Html.DisplayFor(modelItem=> item.Lanche.Nome)</h3>
+            </td>
+            <td>
+                <img src="@item.Lanche.ImagemUrl" class="img-fluid" height="100" width="100"/>
+            </td>
+            <td>
+                <h3>@string.Format("{0:C}", item.Preco)</h3>
+            </td>
+            <td>
+                <h3>(@Html.DisplayFor(modelItem => item.Quantidade))</h3>
+            </td>
+        </tr>
+    }
+</table>
+
+<h3>Total do Pedido @totalPedido</h3>
+
+
+        <a asp-action="Index" class="btn btn-outline-info">Retornar</a>

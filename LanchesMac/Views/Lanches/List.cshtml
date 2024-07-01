@@ -1,0 +1,17 @@
+﻿@model LanchesListViewModel
+
+
+<div class="title-all-text">
+    <h2>@Model.CategoriaAtual</h2>
+</div>
+
+<div class="container">
+    <div class="row">
+        @foreach (var Lanche in Model.Lanches)//o Model sempre vai ser o modelo de dominio que estamos referenciando
+        {
+            <partial name="_LanchesResumo" for="@Lanche" />
+        }
+    </div>
+</div>
+
+

@@ -1,0 +1,55 @@
+﻿@model CarrinhoCompraViewModel
+
+<div class="container">
+
+    <div class="row">
+        <div>
+            <img src="~/images/Full-Cart-icon.png" width="30" height="35" />  <h4>Seu carrinho de compras : </h4>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Lanche</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Subtotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model.CarrinhoCompra.CarrinhoCompraItems)
+                {
+                    <tr>
+                        <th scope="row">@item.Quantidade</th>
+                        <td>@item.Lanche.Nome</td>
+                        <td>@item.Lanche.Preco.ToString("c")</td>
+                        <td>
+                            @((item.Quantidade * item.Lanche.Preco).ToString("c"))
+                        </td>
+                        <td>
+                            <a asp-controller="CarrinhoCompra" asp-action="RemoverDoCarrinhoCompra"
+                               asp-route-lancheId="@item.Lanche.LancheId">
+                                <img src="~/images/delete.png" width="20px" height="20px" />
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tr>
+                <td colspan="3" class="text-right">Total:</td>
+                <td class="text-right">
+                    @Model.CarrinhoCompraTotal.ToString("c")
+                </td>
+            </tr>
+        </table>
+
+        <div class="text-end">
+            <div class="btn-group">
+                <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Encerrar Pedido</a>
+                <a class="btn btn-primary" asp-controller="Lanche" asp-action="List">Continuar Comprando</a>
+            </div>
+        </div>
+        <!--asproute passa o id para o controlador-->
+    </div>
+</div>

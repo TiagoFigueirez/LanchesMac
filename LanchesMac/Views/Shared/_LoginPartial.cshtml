@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+
+@if (SignInManager.IsSignedIn(User))//verifica se tem usuario logado
+{
+    <form asp-area="" asp-controller="Account" asp-action="Logout" id="logoutForm"
+        method="post" class="navbar-left">
+        <ul class="nav navbar-nav nav-bar-left">
+            <button type="submit" style="width:auto" class="nav-link btn btn-link py-0">
+                Usuario: @User.Identity.Name &nbsp;<!--exibe o nome do usuario caso ele esteja logado-->
+            </button>
+        </ul>
+    </form>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-left">
+        <li>
+            <a class="nav-link text-light" asp-controller="Account" asp-action="Login"
+               asp-route-returnUrl="@string.Format("{0}{1}",Context.Request.Path, Context.Request.QueryString)">&nbsp;Login-in&nbsp;&nbsp;&nbsp</a>
+        </li>
+        <li>
+            <a class="nav-link text-light" asp-controller="Account" asp-action="Register" style="color:white">&nbsp;Registro&nbsp;&nbsp;&nbsp;</a>
+        </li>
+        
+    </ul>
+}

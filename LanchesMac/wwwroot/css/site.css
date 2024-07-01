@@ -1,0 +1,66 @@
+html {
+    font-size: 14px;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+#Nav-Bar-Itens {
+    max-width:70%;  
+  
+}
+#Nav-Bar-Itens, ul, li{
+    padding-left: 10px;
+}
+
+#formatarTabela{
+    width: 100%;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.btnLanches a {
+    background-color: gray;
+    text-decoration: none;
+}
+
+a  {
+    display:inline-block;
+    
+}
+button {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .todos-lanches img {
+        max-width: 150px;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .todos-lanches {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .title-all-text {
+        text-align: center;
+    }
+}
